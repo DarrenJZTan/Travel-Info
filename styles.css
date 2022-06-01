@@ -1,0 +1,64 @@
+html, body {
+  margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	height: 100%;
+}
+
+body{ 
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#logo {
+  text-decoration: none;
+  text-decoration: inherit;
+  color: inherit;
+  user-select: none;
+}
+
+#loginImage {
+  width: 32px;
+  border-radius: 100%;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: white;
+  user-select: none;
+}
+
+.navbar-dark .navbar-nav .nav-link:focus, .navbar-dark .navbar-nav .nav-link:hover {
+  color: rgba(255,255,255);
+}
+
+p{
+	margin: 0rem;
+}
+h3 {
+  margin-bottom: 1rem;
+}
+
+.clock {
+  user-select: none;
+  color: red;
+  font-size: 48px;
+  font-family: Orbitron;
+  letter-spacing: 7px;
+}
+
+.background {
+  position: fixed;
+  background-color: grey;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -99;
+}
