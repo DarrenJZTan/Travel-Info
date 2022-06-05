@@ -1,0 +1,15 @@
+{
+  "name": "travel-info",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Documentation.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.1.3"
+  }
+}

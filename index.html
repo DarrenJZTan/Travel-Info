@@ -5,11 +5,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Travel Information</title>
-  <!-- CSS only -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" href="styles.css"></link>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
   <div class="background" id="background"></div>
 
   <!-- Header/Nav -->
@@ -29,23 +28,19 @@
   </header>
 
   <!-- Form Section (Input: Country and Display ON/OFF) -->
-  <div class="container p-4 bg-light mt-5 rounded-2">
+  <div class="container p-4 bg-light mt-5 rounded-2 mb-5">
     <!-- Information -->
-    <div class="" id="info">
+    <div id="info">
       <p class="lead py-2 px-5">Travel Information is a service for travellers around the world. The information provided includes the following: </p>
-      <h5 class="text-center" id="listedWords"></h5>
+      <h5 class="text-center" id="listedWords">Health & Vaccines</h5>
       <p class="lead px-5 pb-3">Start by inputting a country below</p>
     </div>
     <!-- Form (Input a Country)-->
     <form class="px-5">
       <div class="mb-3" >
         <label for="country" class="form-label">Country</label>
-        <input 
-          type="text" 
-          class="form-control"  
-          placeholder="Country"
-          id="countryInput"
-        >
+        <select  class="form-select mb-1" id="countryInput">
+        </select>
         <div class="form-text text-danger invalid-feedback">Something when wrong. Please wait a few seconds before trying again.</div>    
       </div>
       <div class="d-grid gap-2">
@@ -57,31 +52,29 @@
     <!-- Main Card Information (Appears when country input is submitted) -->
     <main class="container p-4 bg-light mt-4 rounded-2 d-none" id="mainCard">
       <!-- Country Name -->
-      <h2 class="display-2 text-center" id="countryName">Country Name</h2>
+      <h2 class="display-2 text-center" id="countryNameTitle">Country Name</h2>
 
       <!-- Advise Output -->
       <section class="p-3">
         <h3 class="px-5">Advise</h3>
-        <p class="px-5">Avoid non-essential travel</p>
+        <div class="px-5" id="advise">Add Advise here</div>
       </section>
 
       <!-- Currency -->
       <section class="p-3">
         <h3 class="px-5">Currency</h3>
-        <p class="px-5 pb-3">The currency in Australia is <span>Austalian dollars ($)</span></p>
+        <p class="px-5 pb-3">The currency in <span class="countryName">Country Name</span> is <span id="countryCurrency">Country Currency</span></p>
         <form class="px-5">
           <div class="mb-3">
-            <label for="country" class="form-label fw-bold" id="currencyCountryIn">Australian Dollar</label>
+            <label for="country" class="form-label fw-bold countryName">Country Currency</label>
             <input type="number" class="form-control" id="currencyCountryInValue" value="1.00" min="0" step="0.01">
           </div>
           <div class="mb-3 text-center"> Equals</div>
           <div class="mb-3">
             <select  class="form-select mb-1 fw-bold" id="currencyCountryOut">
-              <option value="dog">Dog</option>
-              <option value="dog">Cat</option>
             </select>
             <!-- Changes after Input -->
-            <input type="number" class="form-control" id="currencyCountryOutValue" value="1.00" min="0" step="0.01">
+            <input type="number" class="form-control" id="currencyCountryOutValue" value="1.00" min="0" disabled>
           </div>
         </form>
       </section>
@@ -89,8 +82,8 @@
       <!-- Languages -->
       <section class="p-3">
         <h3 class="px-5">Languages</h3>
-        <p class="px-5">The official language spoken in Australia is English</p>
-        <p class="px-5">Other language spoken in Australia are English...</p>
+        <p class="px-5">The official language(s) spoken in <span class="countryName">Country Name</span> <span id="officialLanguage">is Official Language</span></p>
+        <p class="px-5" id="otherLanguageParagraphTag">Other language(s) spoken in <span class="countryName">Country Name</span> <span id="otherLanguages">are other languages</span></p>
       </section>
 
       <!-- Emergency Number -->
@@ -101,7 +94,7 @@
               <h3>Emergency Number</h3>
             </div>
             <div class="col">
-              <p><strong>Calling Code:</strong>&nbsp; +61</p>
+              <p><strong>Calling Code:</strong>&nbsp; +<span id="cCode">code</span></p>
             </div>
           </div>
         </div>
@@ -109,15 +102,15 @@
           <div class="row">
             <div class="col">
               <h5 class="pt-3">Ambulance:</h5>
-              <p>The official language spoken in Australia is English</p>
+              <p id="ambulance">Ambulance Number</p>
             </div>
             <div class="col">
               <h5 class="pt-3">Fire:</h5>
-              <p>The official language spoken in Australia is English</p>
+              <p id="fire">Fire Number</p>
             </div>
             <div class="col">
               <h5 class="pt-3">Police:</h5>
-              <p>The official language spoken in Australia is English</p>
+              <p id="police">Police Number</p>
             </div>
           </div>
         </div>
@@ -126,7 +119,7 @@
       <!-- Timezone -->
       <section class="p-3">
         <h3 class="px-5">Timezone</h3>
-        <p class="px-5">Australia Sydney </p>
+        <p class="px-5" id="nameOfTimezone">Name of timezone</p>
         <div class="wrapper px-5">
           <div id="MyClockDisplay" class="clock" onload="showTime()"></div>
         </div>
@@ -134,30 +127,29 @@
 
       <!-- Vaccinations -->
       <section class="p-3">
-        <h3 class="px-5">Vaccinations</h3>
-        <p class="px-5">There are no vaccinations for Finland</p>
+        <h3 class="px-5">Health Caution</h3>
+        <div class="px-5" id="caution">Add health caution</div>
       </section>
 
       <!-- Water -->
       <section class="p-3">
         <h3 class="px-5">Water</h3>
-        <p class="px-5">Drinking tap water in Finland is safe</p>
+        <p class="px-5">Drinking tap water in <span class="countryName">Country Name</span> is <span id="water">Tap water safety</span></p>
       </section>
 
       <!-- Weather -->
       <section class="p-3">
         <h3 class="px-5">Weather</h3>
-        <p class="px-5 pb-3">Average temperature (°C) in Finland per month</p>
+        <p class="px-5 pb-3">Monthly Temperature (°C) in <span class="countryName">Country Name</span></p>
         <canvas id="myChart" class="px-5" tyle="width:100%;"></canvas>
       </section>
     </main>
   </div>
-
-  <!-- JavaScript Bundle with Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-  <script
-  src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
-  </script>
+  <footer class="mt-auto text-center">
+      <small class="text-light">The data has been composed with travelbriefing.org/api and may contain errors. The author is not liable for any damages resulting from incorrect or incomplete information.</small>
+  </footer>
+  <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
