@@ -1,4 +1,4 @@
-# Travel Information 1.0.0
+# Travel Information 1.0.1
  
 ### Welcome to my travel information application
 
@@ -24,6 +24,9 @@ This Project was created as an assignment piece for Holmesglen - Certificate IV 
 - bootstrap: "^5.1.3"
 
 ### Updates and Improvements
+**1.0.1 Updates:**
+- Added contact page
+
 **1.0.0 Updates:**
 **Packages:**
 - Switched to node bootstrap package
